@@ -1,0 +1,1264 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project Data Mining KNN">
+      
+      
+        <link rel="canonical" href="https://github.com/bayualhaq/170441100024_Ahmad-Try-Bayu-Al-Haq_KNN-Pima-Indians/K-Nearest Neighbors/">
+      
+      
+        <meta name="author" content="Bayu Al Haq">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>K-Nearest Neighbors - Data Mining</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#k-nearest-neighbors" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://github.com/bayualhaq/170441100024_Ahmad-Try-Bayu-Al-Haq_KNN-Pima-Indians" title="Data Mining" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Data Mining
+            </span>
+            <span class="md-header-nav__topic">
+              K-Nearest Neighbors
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/bayualhaq/170441100024_Ahmad-Try-Bayu-Al-Haq_KNN-Pima-Indians" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    bayualhaq/170441100024
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Pengertian" class="md-tabs__link md-tabs__link--active">
+        Pengertian
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://github.com/bayualhaq/170441100024_Ahmad-Try-Bayu-Al-Haq_KNN-Pima-Indians" title="Data Mining" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Data Mining
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/bayualhaq/170441100024_Ahmad-Try-Bayu-Al-Haq_KNN-Pima-Indians" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    bayualhaq/170441100024
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Pengertian" class="md-nav__link">
+      Pengertian
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        K-Nearest Neighbors
+      </label>
+    
+    <a href="./" title="K-Nearest Neighbors" class="md-nav__link md-nav__link--active">
+      K-Nearest Neighbors
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-algoritma-k-nearest-neighbors" title="Pengertian Algoritma K-Nearest Neighbors" class="md-nav__link">
+    Pengertian Algoritma K-Nearest Neighbors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cara-kerja-algoritma-k-nearest-neighbors-knn" title="Cara Kerja Algoritma K-Nearest Neighbors (KNN)" class="md-nav__link">
+    Cara Kerja Algoritma K-Nearest Neighbors (KNN)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tahapan-langkah-algoritma-k-nn" title="Tahapan Langkah Algoritma K-NN" class="md-nav__link">
+    Tahapan Langkah Algoritma K-NN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kelebihan-dan-kekurangan-k-nearest-neighbors" title="Kelebihan dan Kekurangan K-Nearest Neighbors" class="md-nav__link">
+    Kelebihan dan Kekurangan K-Nearest Neighbors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#studi-kasus-pima-indians" title="Studi Kasus (Pima Indians)" class="md-nav__link">
+    Studi Kasus (Pima Indians)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persiapan" title="Persiapan" class="md-nav__link">
+    Persiapan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-langkah" title="Langkah-langkah:" class="md-nav__link">
+    Langkah-langkah:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-import-library" title="1. Import Library" class="md-nav__link">
+    1. Import Library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-import-data-cvs-ke-python" title="2. Import Data CVS ke python" class="md-nav__link">
+    2. Import Data CVS ke python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mengambil-kolom-data-dari-csv" title="3. Mengambil Kolom Data dari CSV" class="md-nav__link">
+    3. Mengambil Kolom Data dari CSV
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-membuat-inputan-nilai-k" title="4. Membuat Inputan nilai K" class="md-nav__link">
+    4. Membuat Inputan nilai K
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-membuat-variable-kosong-untuk-menyimpan-nilai" title="5. Membuat Variable kosong untuk menyimpan nilai" class="md-nav__link">
+    5. Membuat Variable kosong untuk menyimpan nilai
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-membuat-fungsi-data-train-class-0" title="6. Membuat Fungsi Data Train Class 0" class="md-nav__link">
+    6. Membuat Fungsi Data Train Class 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-membuat-fungsi-data-train-class-1" title="7. Membuat Fungsi Data Train Class 1" class="md-nav__link">
+    7. Membuat Fungsi Data Train Class 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-membuat-fungsi-data-test-class-0" title="8. Membuat Fungsi Data Test Class 0" class="md-nav__link">
+    8. Membuat Fungsi Data Test Class 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-membuat-fungsi-data-test-class-1" title="9. Membuat Fungsi Data Test Class 1" class="md-nav__link">
+    9. Membuat Fungsi Data Test Class 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10membuat-fungsi-pcx" title="10.Membuat Fungsi pcx" class="md-nav__link">
+    10.Membuat Fungsi pcx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-membuat-fungsi-hasil" title="11. Membuat Fungsi hasil" class="md-nav__link">
+    11. Membuat Fungsi hasil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-memasukkan-data-ke-fungsi-masuk_data_train_0" title="12. Memasukkan data ke fungsi masuk_data_train_0" class="md-nav__link">
+    12. Memasukkan data ke fungsi masuk_data_train_0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-memasukkan-data-ke-fungsi-masuk_data_train_1" title="14.  Memasukkan data ke fungsi masuk_data_train_1" class="md-nav__link">
+    14.  Memasukkan data ke fungsi masuk_data_train_1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-memasukkan-data-ke-fungsi-masuk_data_test_0" title="15. Memasukkan data ke fungsi masuk_data_test_0" class="md-nav__link">
+    15. Memasukkan data ke fungsi masuk_data_test_0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-memasukkan-data-ke-fungsi-masuk_data_test_1" title="16. Memasukkan data ke fungsi masuk_data_test_1" class="md-nav__link">
+    16. Memasukkan data ke fungsi masuk_data_test_1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-membuat-perulangan-knn" title="17. Membuat perulangan KNN" class="md-nav__link">
+    17. Membuat perulangan KNN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-memasukkan-data-train-data-tes-ke-fungsi-pcx" title="18. Memasukkan data train, data tes ke fungsi pcx" class="md-nav__link">
+    18. Memasukkan data train, data tes ke fungsi pcx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-memasukkan-data-class" title="19. Memasukkan data Class" class="md-nav__link">
+    19. Memasukkan data Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-membuat-titik-untuk-grafik" title="20. Membuat titik untuk grafik" class="md-nav__link">
+    20. Membuat titik untuk grafik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-memasukkan-data-ke-bentuk-table" title="21. Memasukkan data ke bentuk table" class="md-nav__link">
+    21. Memasukkan data ke bentuk table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-menampilkan-data-dalam-bentuk-grafik-batang" title="22.  Menampilkan data dalam bentuk grafik batang" class="md-nav__link">
+    22.  Menampilkan data dalam bentuk grafik batang
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" title="Referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Decision Tree/" title="Decision Tree" class="md-nav__link">
+      Decision Tree
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../authors-notes/" title="Author's notes" class="md-nav__link">
+      Author's notes
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-algoritma-k-nearest-neighbors" title="Pengertian Algoritma K-Nearest Neighbors" class="md-nav__link">
+    Pengertian Algoritma K-Nearest Neighbors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cara-kerja-algoritma-k-nearest-neighbors-knn" title="Cara Kerja Algoritma K-Nearest Neighbors (KNN)" class="md-nav__link">
+    Cara Kerja Algoritma K-Nearest Neighbors (KNN)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tahapan-langkah-algoritma-k-nn" title="Tahapan Langkah Algoritma K-NN" class="md-nav__link">
+    Tahapan Langkah Algoritma K-NN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kelebihan-dan-kekurangan-k-nearest-neighbors" title="Kelebihan dan Kekurangan K-Nearest Neighbors" class="md-nav__link">
+    Kelebihan dan Kekurangan K-Nearest Neighbors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#studi-kasus-pima-indians" title="Studi Kasus (Pima Indians)" class="md-nav__link">
+    Studi Kasus (Pima Indians)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persiapan" title="Persiapan" class="md-nav__link">
+    Persiapan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langkah-langkah" title="Langkah-langkah:" class="md-nav__link">
+    Langkah-langkah:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-import-library" title="1. Import Library" class="md-nav__link">
+    1. Import Library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-import-data-cvs-ke-python" title="2. Import Data CVS ke python" class="md-nav__link">
+    2. Import Data CVS ke python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mengambil-kolom-data-dari-csv" title="3. Mengambil Kolom Data dari CSV" class="md-nav__link">
+    3. Mengambil Kolom Data dari CSV
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-membuat-inputan-nilai-k" title="4. Membuat Inputan nilai K" class="md-nav__link">
+    4. Membuat Inputan nilai K
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-membuat-variable-kosong-untuk-menyimpan-nilai" title="5. Membuat Variable kosong untuk menyimpan nilai" class="md-nav__link">
+    5. Membuat Variable kosong untuk menyimpan nilai
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-membuat-fungsi-data-train-class-0" title="6. Membuat Fungsi Data Train Class 0" class="md-nav__link">
+    6. Membuat Fungsi Data Train Class 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-membuat-fungsi-data-train-class-1" title="7. Membuat Fungsi Data Train Class 1" class="md-nav__link">
+    7. Membuat Fungsi Data Train Class 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-membuat-fungsi-data-test-class-0" title="8. Membuat Fungsi Data Test Class 0" class="md-nav__link">
+    8. Membuat Fungsi Data Test Class 0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-membuat-fungsi-data-test-class-1" title="9. Membuat Fungsi Data Test Class 1" class="md-nav__link">
+    9. Membuat Fungsi Data Test Class 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10membuat-fungsi-pcx" title="10.Membuat Fungsi pcx" class="md-nav__link">
+    10.Membuat Fungsi pcx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-membuat-fungsi-hasil" title="11. Membuat Fungsi hasil" class="md-nav__link">
+    11. Membuat Fungsi hasil
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-memasukkan-data-ke-fungsi-masuk_data_train_0" title="12. Memasukkan data ke fungsi masuk_data_train_0" class="md-nav__link">
+    12. Memasukkan data ke fungsi masuk_data_train_0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-memasukkan-data-ke-fungsi-masuk_data_train_1" title="14.  Memasukkan data ke fungsi masuk_data_train_1" class="md-nav__link">
+    14.  Memasukkan data ke fungsi masuk_data_train_1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-memasukkan-data-ke-fungsi-masuk_data_test_0" title="15. Memasukkan data ke fungsi masuk_data_test_0" class="md-nav__link">
+    15. Memasukkan data ke fungsi masuk_data_test_0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-memasukkan-data-ke-fungsi-masuk_data_test_1" title="16. Memasukkan data ke fungsi masuk_data_test_1" class="md-nav__link">
+    16. Memasukkan data ke fungsi masuk_data_test_1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-membuat-perulangan-knn" title="17. Membuat perulangan KNN" class="md-nav__link">
+    17. Membuat perulangan KNN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-memasukkan-data-train-data-tes-ke-fungsi-pcx" title="18. Memasukkan data train, data tes ke fungsi pcx" class="md-nav__link">
+    18. Memasukkan data train, data tes ke fungsi pcx
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-memasukkan-data-class" title="19. Memasukkan data Class" class="md-nav__link">
+    19. Memasukkan data Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-membuat-titik-untuk-grafik" title="20. Membuat titik untuk grafik" class="md-nav__link">
+    20. Membuat titik untuk grafik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-memasukkan-data-ke-bentuk-table" title="21. Memasukkan data ke bentuk table" class="md-nav__link">
+    21. Memasukkan data ke bentuk table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-menampilkan-data-dalam-bentuk-grafik-batang" title="22.  Menampilkan data dalam bentuk grafik batang" class="md-nav__link">
+    22.  Menampilkan data dalam bentuk grafik batang
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" title="Referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="k-nearest-neighbors"><strong>K-Nearest Neighbors</strong><a class="headerlink" href="#k-nearest-neighbors" title="Permanent link">&para;</a></h1>
+<h2 id="pengertian-algoritma-k-nearest-neighbors"><strong>Pengertian Algoritma K-Nearest Neighbors</strong><a class="headerlink" href="#pengertian-algoritma-k-nearest-neighbors" title="Permanent link">&para;</a></h2>
+<p><img alt="knn" src="../assets/images/knn.png" /></p>
+<p>K-nearest neighbors atau knn adalah algoritma yang berfungsi untuk melakukan klasifikasi suatu data berdasarkan data pembelajaran (<em>train data sets</em>), yang diambil dari k tetangga terdekatnya (<em>nearest neighbors</em>). Dengan k merupakan banyaknya tetangga terdekat.</p>
+<hr>
+
+<h2 id="cara-kerja-algoritma-k-nearest-neighbors-knn"><strong>Cara Kerja Algoritma K-Nearest Neighbors (KNN)</strong><a class="headerlink" href="#cara-kerja-algoritma-k-nearest-neighbors-knn" title="Permanent link">&para;</a></h2>
+<p>K-nearest neighbors melakukan klasifikasi dengan proyeksi data pembelajaran pada ruang berdimensi banyak. Ruang ini dibagi menjadi bagian-bagian yang merepresentasikan kriteria data pembelajaran. Setiap data pembelajaran direpresentasikan menjadi titik-titik <strong><em>c</em></strong> pada ruang dimensi banyak.</p>
+<p><strong>Data baru</strong> yang diklasifikasi selanjutnya diproyeksikan pada ruang dimensi banyak yang telah memuat titik-titik c data pembelajaran. Proses klasifikasi dilakukan dengan mencari titik <strong>c</strong> terdekat dari <strong>c-baru</strong> (<em>nearest neighbor</em>)<em>.</em> Teknik pencarian tetangga terdekat yang umum dilakukan dengan menggunakan formula jarak euclidean.</p>
+<p>Berikut beberapa formula yang digunakan dalam algoritma knn.</p>
+<ul>
+<li><strong>Euclidean Distance</strong> adalah formula untuk mencari jarak antara 2 titik dalam ruang dua dimensi.</li>
+</ul>
+<p><img alt="euclidean" src="../assets/images/euclidean.png" /></p>
+<ul>
+<li>
+<p><strong>Hamming Distance</strong> adalah cara mencari jarak antar 2 titik yang dihitung dengan panjang vektor biner yang dibentuk oleh dua titik tersebut dalam block kode biner.</p>
+</li>
+<li>
+<p><strong>Manhattan Distance</strong> adalah formula untuk mencari jarak <strong>d</strong> antar 2 vektor <strong><em>p,q</em></strong> pada ruang dimensi <strong>n</strong>.</p>
+</li>
+<li>
+<p><strong>Minkowski Distance</strong> adalah formula pengukuran antar 2 titik pada ruang vektor normal yang merupakan hibridisasi yang mengeneralisasi euclidean distance dan mahattan distance.</p>
+</li>
+</ul>
+<p>Teknik pencarian tetangga terdekat disesuaikan dengan dimensi data, proyeksi, dan kemudahan implementasi oleh pengguna.</p>
+<hr>
+
+<h2 id="tahapan-langkah-algoritma-k-nn"><strong>Tahapan Langkah Algoritma K-NN</strong><a class="headerlink" href="#tahapan-langkah-algoritma-k-nn" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Menentukan parameter k (jumlah tetangga paling dekat).</li>
+<li>Menghitung kuadrat jarak eucliden objek terhadap data training yang diberikan.</li>
+<li>Mengurutkan hasil no 2 secara <em>ascending</em> (berurutan dari nilai tinggi ke rendah)</li>
+<li>Mengumpulkan kategori Y (Klasifikasi nearest neighbor berdasarkan nilai k)</li>
+<li>Dengan menggunakan kategori nearest neighbor yang paling mayoritas maka dapat dipredisikan kategori objek.</li>
+</ol>
+<hr>
+
+<h2 id="kelebihan-dan-kekurangan-k-nearest-neighbors"><strong>Kelebihan dan Kekurangan K-Nearest Neighbors</strong><a class="headerlink" href="#kelebihan-dan-kekurangan-k-nearest-neighbors" title="Permanent link">&para;</a></h2>
+<p>Kelebihan:</p>
+<ol>
+<li>Lebih efektif di data training yang besar
+   Dapat menghasilkan data yang lebih akurat</li>
+<li>Mudah dipahami dan diimplementasikan</li>
+</ol>
+<p>Kekurangan:</p>
+<ol>
+<li>Perlu menunjukkan parameter K (jumlah tetangga terdekat)</li>
+<li>Tidak menangani nilai hilang (missing value) secara implisit</li>
+</ol>
+<hr>
+
+<h2 id="studi-kasus-pima-indians"><strong>Studi Kasus (Pima Indians)</strong><a class="headerlink" href="#studi-kasus-pima-indians" title="Permanent link">&para;</a></h2>
+<p>Pima Indians dengan Metode Algoritma K-Nearest Neighbors (KNN)</p>
+<h3 id="persiapan">Persiapan<a class="headerlink" href="#persiapan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python Version: 3.7.1</li>
+<li>Pip Version: 19.1.1</li>
+<li>Spyder Version: 3.3.2</li>
+<li>Data yang digunakan yaitu Pima Indians Dataset yang diperoleh dari Kaggle.com </li>
+</ul>
+<div class="codehilite"><pre><span></span>https://github.com/bayualhaq/Bahan
+</pre></div>
+
+<p><img alt="" src="../assets/images/table.png" /></p>
+<p>Berdasarkan Data Pima Indians Dataset dapat diketahui bahwa terdapat 392 data. Dalam data ini terdapat 9 variabel yaitu pregnant, glucose, diastolic, triceps, insulin, bmi, diabetes, age, test.</p>
+<p>Selanjutnya, klasifikasi menggunakan K-Nearest Neighbor dapat dilakukan dalam phyton seperti berikut.</p>
+<h3 id="langkah-langkah">Langkah-langkah:<a class="headerlink" href="#langkah-langkah" title="Permanent link">&para;</a></h3>
+<h4 id="1-import-library">1. Import Library<a class="headerlink" href="#1-import-library" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Python package yang dibutuhkan dalam pembuatan program ini:</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+
+<h4 id="2-import-data-cvs-ke-python">2. Import Data CVS ke python<a class="headerlink" href="#2-import-data-cvs-ke-python" title="Permanent link">&para;</a></h4>
+<p>memasukkan data csv dari komputer ke python</p>
+<div class="codehilite"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;PimaIndians.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="3-mengambil-kolom-data-dari-csv">3. Mengambil Kolom Data dari CSV<a class="headerlink" href="#3-mengambil-kolom-data-dari-csv" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">col_pre</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 1 dari excel (pregnant)</span>
+<span class="n">col_glu</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 2 dari excel (glucose)</span>
+<span class="n">col_dias</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 3 dari excel (diastilic)</span>
+<span class="n">col_tri</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 4 dari excel (triceps)</span>
+<span class="n">col_ins</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 5 dari excel (insulin)</span>
+<span class="n">col_ins</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 6 dari excel (bmi)</span>
+<span class="n">col_bmi</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 7 dari excel (diabetes)</span>
+<span class="n">col_glu</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 8 dari excel (age)</span>
+<span class="n">col_test</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="c1">#mengambil kolom 9 dari excel (test)</span>
+</pre></div>
+
+<h4 id="4-membuat-inputan-nilai-k">4. Membuat Inputan nilai K<a class="headerlink" href="#4-membuat-inputan-nilai-k" title="Permanent link">&para;</a></h4>
+<p>user dapat memasukkan inputan nilai K sesuai dengan keinginan</p>
+<div class="codehilite"><pre><span></span><span class="n">knn</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan Nilai K = &quot;</span><span class="p">))</span>
+</pre></div>
+
+<p>Output:</p>
+<div class="codehilite"><pre><span></span><span class="n">Masukkan</span> <span class="n">Nilai</span> <span class="n">K</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+
+<h4 id="5-membuat-variable-kosong-untuk-menyimpan-nilai">5. Membuat Variable kosong untuk menyimpan nilai<a class="headerlink" href="#5-membuat-variable-kosong-untuk-menyimpan-nilai" title="Permanent link">&para;</a></h4>
+<p>variable untuk menyimpan nilai data train</p>
+<div class="codehilite"><pre><span></span><span class="n">pre</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">glu</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">dias</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">tri</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">ins</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">bmi</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">diab</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">age</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">test</span><span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
+<p>variable untuk menyimpan nilai data tes</p>
+<div class="codehilite"><pre><span></span><span class="n">pre_dt</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">glu_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">dias_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">tri_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">ins_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">bmi_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">diab_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">age_dt</span><span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_dt</span><span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+
+<p>variable untuk menyimpan nilai hasil perhitungan</p>
+<div class="codehilite"><pre><span></span><span class="n">Hasil</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">benar</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">data</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">accuracy</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">knn_graf</span><span class="o">=</span><span class="p">[]</span>
+</pre></div>
+
+<h4 id="6-membuat-fungsi-data-train-class-0">6. Membuat Fungsi Data Train Class 0<a class="headerlink" href="#6-membuat-fungsi-data-train-class-0" title="Permanent link">&para;</a></h4>
+<p>fungsi mengambil data train yang mempunyai nilai class 0 dengan nama masuk_data_train_0</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">masuk_data_train_0</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">masuk</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span> <span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">col_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">26</span><span class="p">):</span>
+            <span class="n">masuk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+<h4 id="7-membuat-fungsi-data-train-class-1">7. Membuat Fungsi Data Train Class 1<a class="headerlink" href="#7-membuat-fungsi-data-train-class-1" title="Permanent link">&para;</a></h4>
+<p>fungsi mengambil data train yang mempunyai nilai class 1 dengan nama masuk_data_train_1</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">masuk_data_train_1</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">masuk</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span> <span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">col_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">13</span><span class="p">):</span>
+            <span class="n">masuk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+
+<h4 id="8-membuat-fungsi-data-test-class-0">8. Membuat Fungsi Data Test Class 0<a class="headerlink" href="#8-membuat-fungsi-data-test-class-0" title="Permanent link">&para;</a></h4>
+<p>fungsi mengambil data tes yang mempunyai nilai class 0 dengan nama masuk_data_test_0 </p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">masuk_data_test_0</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">masuk</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span> <span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">col_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">26</span><span class="p">):</span>
+                <span class="n">masuk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+
+<h4 id="9-membuat-fungsi-data-test-class-1">9. Membuat Fungsi Data Test Class 1<a class="headerlink" href="#9-membuat-fungsi-data-test-class-1" title="Permanent link">&para;</a></h4>
+<p>fungsi mengambil data tes yang mempunyai nilai class 1 dengan nama masuk_data_test_1</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">masuk_data_test_1</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">masuk</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="nb">len</span> <span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">col_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="o">&gt;</span><span class="mi">13</span><span class="p">):</span>
+                <span class="n">masuk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+
+<h4 id="10membuat-fungsi-pcx">10.Membuat Fungsi pcx<a class="headerlink" href="#10membuat-fungsi-pcx" title="Permanent link">&para;</a></h4>
+<p>fungsi mengambil data dari beberapa variable data train, data tes, knn</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pcx</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span><span class="n">data2</span><span class="p">,</span><span class="n">data3</span><span class="p">,</span><span class="n">data4</span><span class="p">,</span><span class="n">data5</span><span class="p">,</span><span class="n">data6</span><span class="p">,</span><span class="n">data7</span><span class="p">,</span><span class="n">data8</span><span class="p">,</span><span class="n">data9</span><span class="p">,</span>
+        <span class="n">dt1</span><span class="p">,</span><span class="n">dt2</span><span class="p">,</span><span class="n">dt3</span><span class="p">,</span><span class="n">dt4</span><span class="p">,</span><span class="n">dt5</span><span class="p">,</span><span class="n">dt6</span><span class="p">,</span><span class="n">dt7</span><span class="p">,</span><span class="n">dt8</span><span class="p">,</span><span class="n">dt9</span><span class="p">,</span>
+        <span class="n">k</span><span class="p">,</span><span class="n">out</span><span class="p">):</span>
+</pre></div>
+
+<p>membuat perulangan untuk menghitung jarak dari data asli dengan data tes</p>
+<div class="codehilite"><pre><span></span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dt1</span><span class="p">)):</span>
+            <span class="n">dist1</span><span class="o">=</span><span class="p">[]</span>
+            <span class="n">test</span><span class="o">=</span><span class="p">[]</span>
+            <span class="n">coba</span><span class="o">=</span><span class="mi">0</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data1</span><span class="p">)):</span>
+               <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> 
+                             <span class="p">((</span><span class="n">data1</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="p">((</span><span class="n">data2</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> 
+                             <span class="p">((</span><span class="n">data3</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt3</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="p">((</span><span class="n">data4</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt4</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="p">((</span><span class="n">data5</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt5</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> 
+                             <span class="p">((</span><span class="n">data6</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt6</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="p">((</span><span class="n">data7</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt7</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span>
+                             <span class="p">((</span><span class="n">data8</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">dt8</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+               <span class="n">dist1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> 
+            <span class="n">dist1</span><span class="p">,</span><span class="n">test</span>  <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">dist1</span><span class="p">,</span><span class="n">data9</span><span class="p">)))</span>
+            <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="n">z</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+                    <span class="n">coba</span><span class="o">+=</span><span class="mi">1</span>
+
+            <span class="k">if</span> <span class="p">((</span><span class="n">z</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">coba</span><span class="p">):</span>
+                <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">dist1</span>
+            <span class="k">del</span> <span class="n">test</span>
+            <span class="n">coba</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+
+<h4 id="11-membuat-fungsi-hasil">11. Membuat Fungsi hasil<a class="headerlink" href="#11-membuat-fungsi-hasil" title="Permanent link">&para;</a></h4>
+<p>fungsi ini digunakan untuk menghitung kebenaran data, jumlah data dan ke akurasian data</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">hasil</span><span class="p">(</span><span class="n">data_asli</span><span class="p">,</span><span class="n">data_perbandingan</span><span class="p">,</span><span class="n">out</span><span class="p">,</span><span class="n">out2</span><span class="p">,</span><span class="n">out3</span><span class="p">):</span>
+    <span class="n">a</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_asli</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data_asli</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="n">data_perbandingan</span><span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+            <span class="n">a</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">out2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">353</span><span class="p">)</span>
+    <span class="n">out3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="mi">353</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="12-memasukkan-data-ke-fungsi-masuk_data_train_0">12. Memasukkan data ke fungsi masuk_data_train_0<a class="headerlink" href="#12-memasukkan-data-ke-fungsi-masuk_data_train_0" title="Permanent link">&para;</a></h4>
+<p>memasukkan data train mempunyai nilai class 0 </p>
+<div class="codehilite"><pre><span></span><span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_pre</span><span class="p">,</span><span class="n">pre</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">glu</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_dias</span><span class="p">,</span><span class="n">dias</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_tri</span><span class="p">,</span><span class="n">tri</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">ins</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">bmi</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_bmi</span><span class="p">,</span><span class="n">diab</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">age</span><span class="p">)</span>
+<span class="n">masuk_data_train_0</span><span class="p">(</span><span class="n">col_test</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="14-memasukkan-data-ke-fungsi-masuk_data_train_1">14.  Memasukkan data ke fungsi masuk_data_train_1<a class="headerlink" href="#14-memasukkan-data-ke-fungsi-masuk_data_train_1" title="Permanent link">&para;</a></h4>
+<p>memasukkan data train mempunyai nilai class 1</p>
+<div class="codehilite"><pre><span></span><span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_pre</span><span class="p">,</span><span class="n">pre</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">glu</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_dias</span><span class="p">,</span><span class="n">dias</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_tri</span><span class="p">,</span><span class="n">tri</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">ins</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">bmi</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_bmi</span><span class="p">,</span><span class="n">diab</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">age</span><span class="p">)</span>
+<span class="n">masuk_data_train_1</span><span class="p">(</span><span class="n">col_test</span><span class="p">,</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="15-memasukkan-data-ke-fungsi-masuk_data_test_0">15. Memasukkan data ke fungsi masuk_data_test_0<a class="headerlink" href="#15-memasukkan-data-ke-fungsi-masuk_data_test_0" title="Permanent link">&para;</a></h4>
+<p>memasukkan data tes mempunyai nilai class 1</p>
+<div class="codehilite"><pre><span></span><span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_pre</span><span class="p">,</span><span class="n">pre_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">glu_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_dias</span><span class="p">,</span><span class="n">dias_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_tri</span><span class="p">,</span><span class="n">tri_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">ins_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_ins</span><span class="p">,</span><span class="n">bmi_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_bmi</span><span class="p">,</span><span class="n">diab_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_glu</span><span class="p">,</span><span class="n">age_dt</span><span class="p">)</span>
+<span class="n">masuk_data_test_0</span><span class="p">(</span><span class="n">col_test</span><span class="p">,</span><span class="n">test_dt</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="16-memasukkan-data-ke-fungsi-masuk_data_test_1">16. Memasukkan data ke fungsi masuk_data_test_1<a class="headerlink" href="#16-memasukkan-data-ke-fungsi-masuk_data_test_1" title="Permanent link">&para;</a></h4>
+<p>memasukkan data train mempunyai nilai class 1</p>
+<div class="codehilite"><pre><span></span>masuk_data_test_1(col_pre,pre_dt)
+masuk_data_test_1(col_glu,glu_dt)
+masuk_data_test_1(col_dias,dias_dt)
+masuk_data_test_1(col_tri,tri_dt)
+masuk_data_test_1(col_ins,ins_dt)
+masuk_data_test_1(col_ins,bmi_dt)
+masuk_data_test_1(col_bmi,diab_dt)
+masuk_data_test_1(col_glu,age_dt)
+masuk_data_test_1(col_test,test_dt)
+</pre></div>
+
+<h4 id="17-membuat-perulangan-knn">17. Membuat perulangan KNN<a class="headerlink" href="#17-membuat-perulangan-knn" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">knnn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">knn</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">knnn</span><span class="o">+=</span><span class="mi">2</span>
+    <span class="k">del</span> <span class="n">Hasil</span>
+    <span class="n">Hasil</span><span class="o">=</span><span class="p">[]</span>
+</pre></div>
+
+<h4 id="18-memasukkan-data-train-data-tes-ke-fungsi-pcx">18. Memasukkan data train, data tes ke fungsi pcx<a class="headerlink" href="#18-memasukkan-data-train-data-tes-ke-fungsi-pcx" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>    <span class="n">pcx</span><span class="p">(</span><span class="n">pre</span><span class="p">,</span><span class="n">glu</span><span class="p">,</span><span class="n">dias</span><span class="p">,</span><span class="n">tri</span><span class="p">,</span><span class="n">ins</span><span class="p">,</span><span class="n">bmi</span><span class="p">,</span><span class="n">diab</span><span class="p">,</span><span class="n">age</span><span class="p">,</span><span class="n">test</span><span class="p">,</span>
+        <span class="n">pre_dt</span><span class="p">,</span><span class="n">glu_dt</span><span class="p">,</span><span class="n">dias_dt</span><span class="p">,</span><span class="n">tri_dt</span><span class="p">,</span><span class="n">ins_dt</span><span class="p">,</span><span class="n">bmi_dt</span><span class="p">,</span><span class="n">diab_dt</span><span class="p">,</span><span class="n">age_dt</span><span class="p">,</span><span class="n">test_dt</span><span class="p">,</span>
+        <span class="n">knnn</span><span class="p">,</span><span class="n">Hasil</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="19-memasukkan-data-class">19. Memasukkan data Class<a class="headerlink" href="#19-memasukkan-data-class" title="Permanent link">&para;</a></h4>
+<p>kebenaran data, jumlah data dan ke akurasian data</p>
+<div class="codehilite"><pre><span></span>    <span class="c1">#test_dt yaitu data asli diambil dari kolom test</span>
+    <span class="c1">#Hasil yaitu perhitungan data dari pcx sehingga menghasilkan nilai 0 dan nilai 1</span>
+    <span class="c1">#benar yaitu perhitungan setelah data dibandingan dengan data asli</span>
+    <span class="c1">#data yaitu banyak nya data dari data tes </span>
+    <span class="c1">#accuracy yaitu membagi benar dengan data sehingga mendapat nilai keakurasian</span>
+    <span class="n">hasil</span><span class="p">(</span><span class="n">test_dt</span><span class="p">,</span><span class="n">Hasil</span><span class="p">,</span><span class="n">benar</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="20-membuat-titik-untuk-grafik">20. Membuat titik untuk grafik<a class="headerlink" href="#20-membuat-titik-untuk-grafik" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>    <span class="n">knn_graf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knnn</span><span class="p">)</span>
+</pre></div>
+
+<h4 id="21-memasukkan-data-ke-bentuk-table">21. Memasukkan data ke bentuk table<a class="headerlink" href="#21-memasukkan-data-ke-bentuk-table" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;knn&#39;</span><span class="p">:</span><span class="n">knn_graf</span><span class="p">,</span><span class="s1">&#39;databenar&#39;</span><span class="p">:</span><span class="n">benar</span><span class="p">,</span> <span class="s1">&#39;Jmldata&#39;</span><span class="p">:</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span><span class="n">accuracy</span><span class="p">})</span>
+<span class="k">print</span> <span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+<p>Output:</p>
+<div class="codehilite"><pre><span></span>   <span class="n">knn</span>  <span class="n">databenar</span>  <span class="n">Jmldata</span>  <span class="n">accuracy</span>
+<span class="mi">0</span>    <span class="mi">2</span>        <span class="mi">236</span>      <span class="mi">353</span>  <span class="mf">0.668555</span>
+<span class="mi">1</span>    <span class="mi">3</span>        <span class="mi">241</span>      <span class="mi">353</span>  <span class="mf">0.682720</span>
+<span class="mi">2</span>    <span class="mi">4</span>        <span class="mi">240</span>      <span class="mi">353</span>  <span class="mf">0.679887</span>
+<span class="mi">3</span>    <span class="mi">5</span>        <span class="mi">240</span>      <span class="mi">353</span>  <span class="mf">0.679887</span>
+</pre></div>
+
+<h4 id="22-menampilkan-data-dalam-bentuk-grafik-batang">22.  Menampilkan data dalam bentuk grafik batang<a class="headerlink" href="#22-menampilkan-data-dalam-bentuk-grafik-batang" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<p>Output:</p>
+<p><img alt="7" src="../assets/images/plot.png" /></p>
+<h2 id="referensi"><strong>Referensi</strong><a class="headerlink" href="#referensi" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.advernesia.com/blog/data-science/pengertian-dan-cara-kerja-algoritma-k-nearest-neighbours-knn/">https://www.advernesia.com/blog/data-science/pengertian-dan-cara-kerja-algoritma-k-nearest-neighbours-knn/</a></li>
+<li><a href="http://congryo.blogspot.com/2013/01/pengertian-kekurangan-dan-kelebihan.html">http://congryo.blogspot.com/2013/01/pengertian-kekurangan-dan-kelebihan.html</a></li>
+<li><a href="https://medium.com/@16611130/klasifikasi-menggunakan-metode-knn-k-nearest-neighbor-dalam-python-a40e79a74101">https://medium.com/@16611130/klasifikasi-menggunakan-metode-knn-k-nearest-neighbor-dalam-python-a40e79a74101</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Pengertian" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Pengertian
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../Decision Tree/" title="Decision Tree" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Decision Tree
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Bayu Al Haq
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="http://struct.cc" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/bayualhaq" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
